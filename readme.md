@@ -37,3 +37,4 @@
 ## 四、参考文档
 + [dubbo-go-samples](https://github.com/apache/dubbo-go-samples)
 + [dubbogo 基础使用示例---俊果果-简书](https://www.jianshu.com/p/3698adc67e20)
++ [dubbogo 调用部署在不同zk的同一服务](https://www.jianshu.com/p/f3a7530d8359)
