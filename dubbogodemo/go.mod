@@ -2,7 +2,10 @@ module dubbo-demo
 
 go 1.17
 
+replace dubbo-demo/pkg => ./pkg
+
 require (
+	dubbo-demo/pkg v0.0.0-00010101000000-000000000000
 	dubbo.apache.org/dubbo-go/v3 v3.0.0-rc2.0.20211017043158-0aac960e6219
 	github.com/apache/dubbo-go-hessian2 v1.9.3
 	github.com/pkg/errors v0.9.1

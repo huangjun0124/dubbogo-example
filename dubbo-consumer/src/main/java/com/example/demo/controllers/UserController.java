@@ -8,23 +8,20 @@ import com.example.demo.dto.ResultGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
 @Slf4j
 public class UserController {
-    @DubboReference(retries = 0, timeout = 1000 * 60, application = "dubbogo-demo", group = "dubbo-service", version = "1.0.0")
+    @DubboReference(retries = 0, timeout = 1000 * 60)
     UserService userService;
 
     @GetMapping("/query")
     @ResponseBody
-    public Result QueryUser(){
+    public Result QueryUser(@RequestParam String userId){
         QueryUserParam req = new QueryUserParam();
-        req.setUserId("666");
+        req.setUserId(userId);
         RpcContext rpcContext = RpcContext.getContext();
         rpcContext.setAttachment("app", "dubbo-consumer");
         QueryUserResponse resp = null;

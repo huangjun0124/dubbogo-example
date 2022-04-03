@@ -23,15 +23,6 @@ dubbo:
       UserService:
         protocol: dubbo
         interface: com.demo.exp.service.UserService
-        group: dubbo-service
-        version: 1.0.0
-        loadbalance: random
-        warmup: 100
-        cluster: failover
-        methods:
-          - name: QueryUser
-            retries: 1
-            loadbalance: random
   logger:
     zap-config:
       level: info

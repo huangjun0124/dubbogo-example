@@ -1,5 +1,16 @@
 package dto
 
+
+type UserRequest struct {
+	UserName string // 用户名
+	UserId string // 用户id
+}
+
+func(req UserRequest) JavaClassName() string{
+	return JavaDtoPgkName + "QueryUserParam"
+}
+
+
 type UserResponse struct {
 	UserName string // 用户名
 	UserId string // 用户id
@@ -9,5 +20,5 @@ type UserResponse struct {
 }
 
 func(req UserResponse) JavaClassName() string{
-	return "com.demo.exp.dto.QueryUserResponse"
+	return JavaDtoPgkName + "QueryUserResponse"
 }
