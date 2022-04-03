@@ -12,3 +12,7 @@ import (
 type UserService struct {
 	QueryUser func(ctx context.Context, in *dto.UserRequest)(*dto.UserResponse, error)
 }
+
+func(a *UserService) Reference()string{
+	return "com.demo.exp.service.UserService"
+}

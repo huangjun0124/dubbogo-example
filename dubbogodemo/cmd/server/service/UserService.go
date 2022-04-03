@@ -5,6 +5,7 @@ import (
 	"dubbo-demo/pkg/dto"
 	util2 "dubbo-demo/util"
 	"github.com/pkg/errors"
+	"github.com/sirupsen/logrus"
 	"time"
 )
 
@@ -20,7 +21,12 @@ func (u *UserService) Reference() string {
 }
 
 func (u *UserService) QueryUser(ctx context.Context, in *dto.UserRequest)(*dto.UserResponse, error){
-	appName := util2.GetDubboContextAppName(ctx)
+	appName, traceId := util2.GetDubboContextAppName(ctx)
+	logrus.WithFields(logrus.Fields{
+		"appName" : appName,
+		"traceId": traceId,
+		"req": in,
+	}).Info("user_service:queryuser received call")
 	if appName == ""{
 		return nil, errors.Errorf("auth error, no appname")
 	}

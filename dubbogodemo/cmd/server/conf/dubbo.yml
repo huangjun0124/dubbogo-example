@@ -2,7 +2,7 @@
 
 dubbo:
   application:
-    name: dubbogo-demo
+    name: dubbogo-demo-server
     module: dubbogo
     version: 1.0.0
     owner: demo
@@ -10,7 +10,7 @@ dubbo:
     demoZK:
       protocol: zookeeper
       timeout: 3s
-      address: 192.168.96.129:2181
+      address: 192.168.96.129:2182
   protocols:
     dubbo:
       name: dubbo
@@ -25,4 +25,4 @@ dubbo:
         interface: com.demo.exp.service.UserService
   logger:
     zap-config:
-      level: info
+      level: error
