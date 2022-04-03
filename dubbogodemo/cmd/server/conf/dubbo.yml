@@ -10,11 +10,11 @@ dubbo:
     demoZK:
       protocol: zookeeper
       timeout: 3s
-      address: 192.168.96.129:2182
+      address: 192.168.96.129:2181
   protocols:
     dubbo:
       name: dubbo
-      port: 20000
+      port: 20001
   provider:
     register: true
     registryIDs:

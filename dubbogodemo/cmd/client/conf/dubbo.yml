@@ -1,0 +1,39 @@
+# dubbo server yaml configure file
+
+dubbo:
+  application:
+    name: dubbogo-demo-consumer
+    module: dubbogo
+    version: 1.0.0
+    owner: demo
+  registries:
+    zk1:
+      protocol: zookeeper
+      timeout: 3s
+      address: 192.168.96.129:2181
+    zk2:
+      protocol: zookeeper
+      timeout: 3s
+      address: 192.168.96.129:2182
+  protocols:
+    dubbo:
+      name: dubbo
+  consumer:
+    request-timeout: 10s
+    check: false
+    references:
+      UserServiceEnv1:
+        retries: 0
+        registry-ids:
+          - zk1
+        protocol: dubbo
+        interface: com.demo.exp.service.UserService
+      UserServiceEnv2:
+        retries: 0
+        registry-ids:
+          - zk2
+        protocol: dubbo
+        interface: com.demo.exp.service.UserService
+  logger:
+    zap-config:
+      level: error
