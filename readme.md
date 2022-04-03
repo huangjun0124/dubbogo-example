@@ -2,7 +2,7 @@
 此项目为一个starter示例，介绍使用`springboot dubbo`项目通过`dubbo`协议访问`dubbogo`服务。
 ## 二、项目结构
 ```tree
-├─dubbo-client                          // springboot 子项目，存放dubbo接口的信息
+├─dubbo-client                          // 定义java使用的dubbo dto和接口信息，用于消费者引用
 │  ├─src
 │  │  └─main
 │  │      ├─java
@@ -12,17 +12,17 @@
 │  │      │              ├─dto          // dubbo接口的请求及返回参数定义
 │  │      │              └─service      // dubbo 接口定义
 │  │      └─resources
-├─dubbo-consumer                        // springboot 子项目，java客户端
+├─dubbo-consumer                        // springboot 子项目，java消费者示例客户端
 │  ├─src
 │  │  ├─main
 │  │  │  ├─java
 │  │  │  │  └─com
 │  │  │  │      └─example
 │  │  │  │          └─demo
-│  │  │  │              ├─controllers   // restcontroller
+│  │  │  │              ├─controllers   // restcontroller http接口，内部调用引用【dubbo-client】调用注册到zk上的`go`服务
 │  │  │  │              └─dto           // request dto
 │  │  │  └─resources                    // 资源文件
-└─dubbogodemo                           // go 语言的 dubbo 服务，建议单独剪切出去运行，不需要用 idea 打开
+└─dubbogodemo                           // go 语言的 dubbo 服务，为服务提供者
     ├─cmd                               // dubbogo 服务启动器
     ├─conf                              // dubbogo 服务配置文件
     └─pkg
